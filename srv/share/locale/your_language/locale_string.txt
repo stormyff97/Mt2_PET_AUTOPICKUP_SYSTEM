@@ -1,0 +1,2 @@
+"Hai ricevuto: %s x%d";
+"[LS;2108;%s;%d]";
