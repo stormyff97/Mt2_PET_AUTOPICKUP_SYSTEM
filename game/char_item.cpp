@@ -150,3 +150,25 @@ bool CHARACTER::HasActiveAutoPickupItem() const
 	return false;
 }
 #endif
+
+
+//into--> bool CHARACTER::PickupItem(DWORD dwVID)
+	//after:
+		if (item->IsOwnership(this))
+		{
+
+//add:
+		#ifdef PET_AUTODROP
+			// Pet auto-pickup: blocca item NON stackabili se inventario pieno
+			if (HasActiveAutoPickupItem())
+			{
+				if (!item->IsStackable())
+				{
+					if (GetEmptyInventoryEx(item) == -1)
+					{
+						ChatPacket(CHAT_TYPE_INFO, LC_TEXT("PET: Inventory full!"));
+						return false;
+					}
+				}
+			}
+		#endif

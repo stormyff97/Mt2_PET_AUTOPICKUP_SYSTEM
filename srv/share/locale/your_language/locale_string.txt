@@ -1,2 +1,2 @@
-"Hai ricevuto: %s x%d";
-"[LS;2108;%s;%d]";
+"PET: Inventory full!";
+"[LS;2109]";
