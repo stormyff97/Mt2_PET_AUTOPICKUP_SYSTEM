@@ -12,9 +12,15 @@
 	if (CPythonPlayer::Instance().HasPetAutoPickup())
 	{
 		const char* ownerName = nullptr;
+
 		if (CPythonItem::Instance().GetOwnership(p.dwVID, &ownerName))
 		{
-			CPythonNetworkStream::Instance().SendItemPickUpPacket(p.dwVID);
+			const char* myName = CPythonPlayer::Instance().GetName();
+
+			if (ownerName && strcmp(ownerName, myName) == 0)
+			{
+				CPythonNetworkStream::Instance().SendItemPickUpPacket(p.dwVID);
+			}
 		}
 	}
 #endif
