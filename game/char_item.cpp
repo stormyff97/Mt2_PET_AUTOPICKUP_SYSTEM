@@ -162,7 +162,7 @@ bool CHARACTER::HasActiveAutoPickupItem() const
 			// Pet auto-pickup: blocca item NON stackabili se inventario pieno
 			if (HasActiveAutoPickupItem())
 			{
-				if (!item->IsStackable())
+				if (item->GetType() != ITEM_ELK && !item->IsStackable()) //GuusPadial fix for pickup yang if inventory is full
 				{
 					if (GetEmptyInventoryEx(item) == -1)
 					{
